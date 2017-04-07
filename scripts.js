@@ -1,25 +1,22 @@
-var ol = document.querySelector('ol');
+var ol = $('ol');
 
 function addMessage(message) {
-	var li = document.createElement('li');
-	li.textContent = message;
-	ol.appendChild(li);
+	ol.append('<li>' + message + '</li>');
 }
 
-var buttons = document.querySelectorAll('button[type]');
-for (var i = 0; i < buttons.length; i++) {
-	buttons[i].addEventListener('click', function(e) {
-		addMessage(e.target.textContent);
-	});
-}
+$('button[type]').on('click', function(e) {
+	addMessage(e.target.textContent);
+});
 
-var form = document.querySelector('form');
-var input = document.querySelector('input');
+var input = $('input');
 
-form.addEventListener('submit', function(e) {
+$('form').on('submit', function(e) {
 	e.preventDefault();
-	if (input.value) {
-		addMessage(input.value);
-		input.value = '';
+	if (input.val()) {
+		addMessage(input.val());
+		input.val('');
 	}
 });
+
+// var section = $('section');
+// section.fadeOut().fadeIn().slideUp().slideDown();
